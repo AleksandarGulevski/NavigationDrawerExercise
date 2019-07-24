@@ -10,10 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,6 +58,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        navigationView.setCheckedItem(R.id.switchToggleButton);
+        navigationView.getMenu().performIdentifierAction(R.id.switchToggleButton, 0);
         if (mToggle.onOptionsItemSelected(item)) {
             return true;
         } else {
@@ -85,10 +91,27 @@ public class HomeActivity extends AppCompatActivity {
                 toolbarTitle.setText("Profile");
                 mDrawerLayout.closeDrawers();
                 break;
+            case R.id.switchToggleButton:
+                MenuItem menuItem = navigationView.getMenu().findItem(R.id.switchToggleButton); // This is the menu item that contains your switch
+                Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.drawer_switch);
+                drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            Toast.makeText(HomeActivity.this, "Switch turned on", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(HomeActivity.this, "Switch turned off", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                break;
             case R.id.logout:
                 finish();
                 break;
         }
 
     }
+
 }
+
+

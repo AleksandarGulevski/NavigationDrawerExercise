@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/home"
@@ -10,6 +11,12 @@
         android:id="@+id/profile"
         android:icon="@drawable/ic_account_box_black_24dp"
         android:title="Profile" />
+
+    <item
+        android:id="@+id/switchToggleButton"
+        android:icon="@drawable/ic_switch_camera_black_24dp"
+        android:title="Switch"
+        app:actionLayout="@layout/layout_switch"/>
 
 
     <item
