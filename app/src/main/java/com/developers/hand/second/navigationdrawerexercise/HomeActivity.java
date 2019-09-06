@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    private boolean isMembersVisible = false;
     @BindView(R.id.mDrawerLayout)
     NavigationView navigationView;
     @BindView(R.id.container)
@@ -54,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         mToggle.setDrawerIndicatorEnabled(true);
         mToggle.syncState();
         toolbarTitle.setText("Home");
+        navigationView.getMenu().setGroupVisible(R.id.members_group, false);
     }
 
     @Override
@@ -105,7 +107,25 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 });
                 break;
-            case R.id.logout:
+            case R.id.members:
+                if (!isMembersVisible) {
+                    navigationView.getMenu().setGroupVisible(R.id.members_group, true);
+                    isMembersVisible = true;
+                } else {
+                    navigationView.getMenu().setGroupVisible(R.id.members_group, false);
+                    isMembersVisible = false;
+                }
+                break;
+            case R.id.memberone:
+                Toast.makeText(HomeActivity.this, "Member one selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.membertwo:
+                Toast.makeText(HomeActivity.this, "Member two selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.memberthree:
+                Toast.makeText(HomeActivity.this, "Member three selected", Toast.LENGTH_SHORT).show();
+                break;
+             case R.id.logout:
                 finish();
                 break;
         }

@@ -18,10 +18,42 @@
         android:title="Switch"
         app:actionLayout="@layout/layout_switch"/>
 
-
     <item
-        android:id="@+id/logout"
-        android:icon="@drawable/ic_cancel_black_24dp"
-        android:title="Logout" />
+        android:id="@+id/members"
+        android:title="Members"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:visible="true" />
+
+    <group
+        android:id="@+id/members_group"
+        android:checkableBehavior="single"
+        android:visible="false">
+
+        <menu>
+
+            <item
+                android:id="@+id/memberone"
+                android:title="Member one" />
+
+            <item
+                android:id="@+id/membertwo"
+                android:title="Member Two" />
+            <item
+                android:id="@+id/memberthree"
+                android:title="Member Three" />
+
+        </menu>
+
+    </group>
+
+
+    <group
+        android:id="@+id/logoutGroup"
+     >
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_cancel_black_24dp"
+            android:title="Logout" />
+    </group>
 
 </menu>
